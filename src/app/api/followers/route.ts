@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 const API_VERSION = 'v20.0';
 const GRAPH_API = 'https://graph.facebook.com';
 
 export async function GET(request: NextRequest) {
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return NextResponse.json({ count: 0, username: '', source: 'build' });
+  }
+
   const username = request.nextUrl.searchParams.get('username') || 'mzsports_tz';
   const token = process.env.INSTAGRAM_ACCESS_TOKEN;
   const businessId = process.env.INSTAGRAM_BUSINESS_ID;

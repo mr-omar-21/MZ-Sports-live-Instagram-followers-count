@@ -12,11 +12,11 @@ function getDigitCount(n: number): number {
 }
 
 function getFontSize(digitCount: number): string {
-  if (digitCount <= 3) return 'clamp(8rem, 38vw, 30rem)';
-  if (digitCount <= 4) return 'clamp(7rem, 32vw, 26rem)';
-  if (digitCount <= 5) return 'clamp(5.5rem, 26vw, 21rem)';
-  if (digitCount <= 6) return 'clamp(4.5rem, 22vw, 17rem)';
-  return 'clamp(3.5rem, 18vw, 13rem)';
+  if (digitCount <= 3) return 'clamp(3.5rem, 16vw, 12rem)';
+  if (digitCount <= 4) return 'clamp(3rem, 12vw, 10rem)';
+  if (digitCount <= 5) return 'clamp(2.5rem, 10vw, 8rem)';
+  if (digitCount <= 6) return 'clamp(2rem, 8vw, 6.5rem)';
+  return 'clamp(1.75rem, 6.5vw, 5.5rem)';
 }
 
 export default function FollowerCounter({ value }: FollowerCounterProps) {
