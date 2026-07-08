@@ -83,19 +83,20 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen animate-gradient-bg flex items-center justify-center p-6 sm:p-10">
+    <main className="min-h-screen animate-gradient-bg flex items-center justify-center p-3 sm:p-6 lg:p-10">
       <div
-        className="bg-white rounded-[24px] w-[95%] sm:w-[92%] lg:w-[88%] max-w-[1800px] flex flex-col lg:flex-row overflow-hidden min-h-[70vh] lg:min-h-[75vh]"
+        className="bg-white rounded-[16px] sm:rounded-[24px] w-full sm:w-[95%] lg:w-[88%] max-w-[1800px] flex flex-col lg:flex-row overflow-hidden min-h-screen sm:min-h-[70vh] lg:min-h-[75vh]"
         style={{ boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)' }}
       >
-        <div className="lg:w-[40%] flex flex-col items-center justify-center py-12 sm:py-16 px-8 sm:px-12">
+        {/* Mobile: stacked column. Desktop: left panel (40%) */}
+        <div className="lg:w-[40%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12">
           <img
             src="/instagram-logo.png"
             alt="Instagram"
-            className="w-28 h-28 sm:w-36 sm:h-36 mb-5 object-contain"
+            className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-3 sm:mb-4 lg:mb-5 object-contain"
           />
 
-          <div className="flex items-center justify-center w-full">
+          <div className="flex items-center justify-center w-full max-w-[300px] sm:max-w-none">
             <QRCode username={username || USERNAME} />
           </div>
 
@@ -105,22 +106,23 @@ export default function Home() {
             speed={60}
             loopDelay={10000}
             cursor={false}
-            className="text-[#43a047] font-anton uppercase tracking-wider text-center leading-tight mt-6"
-            style={{ fontSize: 'clamp(2rem, 5vw, 4.2rem)' }}
+            className="text-[#43a047] font-anton uppercase tracking-wider text-center leading-tight mt-4 sm:mt-5 lg:mt-6"
+            style={{ fontSize: 'clamp(1.5rem, 6vw, 4.2rem)' }}
           />
         </div>
 
         <div className="w-px bg-black/20 hidden lg:block" />
 
-        <div className="lg:w-[60%] flex flex-col items-center justify-center py-12 sm:py-16 px-8 sm:px-12 min-h-[400px]">
-          <div className="flex items-center gap-4 mb-2">
+        {/* Mobile: stacked column. Desktop: right panel (60%) */}
+        <div className="lg:w-[60%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12 min-h-[300px] sm:min-h-[400px]">
+          <div className="flex items-center gap-3 sm:gap-4 mb-2">
             <img
               src="/mz-logo.png"
               alt="MZ Sports"
-              className="w-14 h-14 sm:w-16 sm:h-16 object-contain shrink-0"
+              className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain shrink-0"
             />
             <h1 className="text-[#1E1E1E] font-anton tracking-wider uppercase"
-              style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.2rem)' }}
+              style={{ fontSize: 'clamp(1rem, 3vw, 2.2rem)' }}
             >
               MZ SPORTS
             </h1>
@@ -132,31 +134,31 @@ export default function Home() {
             speed={50}
             loopDelay={10000}
             cursor={false}
-            className="text-[#e53935] font-anton uppercase tracking-wider text-center mt-2 mb-6"
-            style={{ fontSize: 'clamp(2rem, 5vw, 4.2rem)' }}
+            className="text-[#e53935] font-anton uppercase tracking-wider text-center mt-1 sm:mt-2 mb-4 sm:mb-6"
+            style={{ fontSize: 'clamp(1.2rem, 5vw, 4.2rem)' }}
           />
 
-          <div className="w-full flex justify-center mb-6">
+          <div className="w-full flex justify-center mb-4 sm:mb-6 overflow-x-auto">
             <FollowerCounter value={displayCount} />
           </div>
 
-          <div className="flex items-center gap-3 mb-2">
-            <span className="w-3 h-3 rounded-full bg-green-500 animate-dot-pulse" />
+          <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+            <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500 animate-dot-pulse" />
             <span className="text-[#1E1E1E]/50 font-anton uppercase tracking-[0.15em]"
-              style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.1rem)' }}
+              style={{ fontSize: 'clamp(0.7rem, 1.2vw, 1.1rem)' }}
             >
               LIVE
             </span>
           </div>
 
           <span className="text-[#1E1E1E] font-anton uppercase tracking-wider"
-            style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.1rem)' }}
+            style={{ fontSize: 'clamp(0.7rem, 1.2vw, 1.1rem)' }}
           >
             @{username || USERNAME}
           </span>
 
           {error && (
-            <p className="text-[#e53935] font-anton mt-3" style={{ fontSize: 'clamp(0.7rem, 1vw, 0.9rem)' }}>{error}</p>
+            <p className="text-[#e53935] font-anton mt-3" style={{ fontSize: 'clamp(0.6rem, 1vw, 0.9rem)' }}>{error}</p>
           )}
         </div>
       </div>
