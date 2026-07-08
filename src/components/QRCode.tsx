@@ -28,7 +28,7 @@ export default function QRCode({ username }: QRCodeProps) {
       <canvas
         ref={canvasRef}
         className="rounded-xl"
-        style={{ width: 'clamp(160px, 25vw, 280px)', height: 'clamp(160px, 25vw, 280px)' }}
+        style={{ width: 'clamp(180px, 20vw, 340px)', height: 'clamp(180px, 20vw, 340px)' }}
       />
     </div>
   );

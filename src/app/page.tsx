@@ -75,10 +75,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#e53935] flex items-center justify-center p-4 sm:p-8">
       <div
-        className="bg-white rounded-[24px] w-full max-w-[1100px] flex flex-col lg:flex-row overflow-hidden"
+        className="bg-white rounded-[24px] w-[95%] sm:w-[92%] lg:w-[85%] max-w-[1600px] flex flex-col lg:flex-row overflow-hidden"
         style={{ boxShadow: '0px 15px 35px rgba(0, 0, 0, 0.5)' }}
       >
-        <div className="lg:w-[42%] flex flex-col items-center justify-center py-10 sm:py-14 px-6 sm:px-8">
+        <div className="lg:w-[42%] flex flex-col items-center justify-center py-10 sm:py-14 px-6 sm:px-10">
           <div className="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full flex items-center justify-center mb-4"
             style={{
               background: 'linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)',
@@ -101,9 +101,14 @@ export default function Home() {
         <div className="w-px bg-black/20 hidden lg:block" />
 
         <div className="lg:w-[58%] flex flex-col items-center justify-center py-10 sm:py-14 px-6 sm:px-8 min-h-[350px]">
-          <h1 className="text-[#1E1E1E] text-xl sm:text-2xl font-anton tracking-wider uppercase">
-            MZ SPORTS
-          </h1>
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1E1E1E] flex items-center justify-center shrink-0">
+              <span className="text-white font-bold text-sm sm:text-base leading-none">MZ</span>
+            </div>
+            <h1 className="text-[#1E1E1E] text-xl sm:text-2xl lg:text-3xl font-anton tracking-wider uppercase">
+              MZ SPORTS
+            </h1>
+          </div>
 
           <h2 className="text-[#e53935] text-2xl sm:text-3xl lg:text-4xl font-anton uppercase tracking-wider text-center mt-1 mb-5">
             LIVE FOLLOWERS COUNT
