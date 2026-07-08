@@ -29,17 +29,19 @@ body {
 
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
-  25% { background-position: 50% 0%; }
-  50% { background-position: 100% 50%; }
-  75% { background-position: 50% 100%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
   100% { background-position: 0% 50%; }
 }
 
 .animate-gradient-bg {
-  background: linear-gradient(-45deg, #e53935, #d32f2f, #c62828, #e53935, #ef5350, #e53935);
-  background-size: 400% 400%;
-  animation: gradient-shift 12s ease infinite;
+  background: linear-gradient(-45deg, #e53935, #ff6b6b, #c62828, #d32f2f, #ef5350, #e53935, #ff5252, #b71c1c);
+  background-size: 600% 600%;
+  animation: gradient-shift 6s ease infinite;
 }
+
+
 
 @keyframes typewriter-cursor {
   0%, 100% { opacity: 1; }

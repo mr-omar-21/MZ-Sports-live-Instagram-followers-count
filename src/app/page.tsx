@@ -89,15 +89,11 @@ export default function Home() {
         style={{ boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)' }}
       >
         <div className="lg:w-[40%] flex flex-col items-center justify-center py-12 sm:py-16 px-8 sm:px-12">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center mb-5"
-            style={{
-              background: 'linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)',
-            }}
-          >
-            <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m-.1 1.5h1.6c.84 0 1.5.66 1.5 1.5v1.6a1.5 1.5 0 0 1-1.5 1.5H7.5A1.5 1.5 0 0 1 6 8.5V7a1 1 0 0 1 1.5-1.5M18 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6m0 1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
-            </svg>
-          </div>
+          <img
+            src="/instagram-logo.png"
+            alt="Instagram"
+            className="w-28 h-28 sm:w-36 sm:h-36 mb-5 object-contain"
+          />
 
           <div className="flex items-center justify-center w-full">
             <QRCode username={username || USERNAME} />
@@ -118,9 +114,11 @@ export default function Home() {
 
         <div className="lg:w-[60%] flex flex-col items-center justify-center py-12 sm:py-16 px-8 sm:px-12 min-h-[400px]">
           <div className="flex items-center gap-4 mb-2">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1E1E1E] flex items-center justify-center shrink-0">
-              <span className="text-white font-bold text-xl sm:text-2xl leading-none">MZ</span>
-            </div>
+            <img
+              src="/mz-logo.png"
+              alt="MZ Sports"
+              className="w-14 h-14 sm:w-16 sm:h-16 object-contain shrink-0"
+            />
             <h1 className="text-[#1E1E1E] font-anton tracking-wider uppercase"
               style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.2rem)' }}
             >
