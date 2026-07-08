@@ -12,7 +12,7 @@ export default function PlusOneAnimation({ visible }: PlusOneAnimationProps) {
   useEffect(() => {
     if (visible) {
       setActive(true);
-      const t = setTimeout(() => setActive(false), 1800);
+      const t = setTimeout(() => setActive(false), 2500);
       return () => clearTimeout(t);
     } else {
       setActive(false);
@@ -24,14 +24,15 @@ export default function PlusOneAnimation({ visible }: PlusOneAnimationProps) {
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none">
       <span
-        className="animate-plus-one font-black"
+        className="animate-plus-one font-anton"
         style={{
-          fontSize: 'clamp(4rem, 20vw, 12rem)',
+          fontSize: 'clamp(6rem, 25vw, 15rem)',
           background: 'linear-gradient(135deg, #fcb045, #fd1d1d, #833ab4)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
-          filter: 'drop-shadow(0 0 30px rgba(253,29,29,0.4))',
+          filter: 'drop-shadow(0 0 40px rgba(253,29,29,0.6)) drop-shadow(0 0 80px rgba(131,58,180,0.4))',
           lineHeight: 1,
+          fontWeight: 400,
         }}
       >
         +1

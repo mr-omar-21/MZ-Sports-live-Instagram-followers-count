@@ -19,8 +19,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const res = await fetch(
-      `${GRAPH_API}/${API_VERSION}/${businessId}?fields=followers_count&access_token=${token}`,
-      { next: { revalidate: 60 } }
+      `${GRAPH_API}/${API_VERSION}/${businessId}?fields=followers_count&access_token=${token}`
     );
 
     if (!res.ok) {

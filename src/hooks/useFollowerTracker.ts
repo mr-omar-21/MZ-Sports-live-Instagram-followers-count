@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
+
+const STORAGE_KEY = 'mzsports_follower_count';
 
 export interface FollowerData {
   count: number;
@@ -12,28 +14,49 @@ export interface FollowerData {
 }
 
 export function useFollowerTracker() {
-  const [data, setData] = useState<FollowerData>({
-    count: 0,
-    previousCount: null,
-    username: '',
-    isPolling: false,
-    error: null,
-    isNewFollower: false,
+  const [data, setData] = useState<FollowerData>(() => {
+    if (typeof window !== 'undefined') {
+      const cached = localStorage.getItem(STORAGE_KEY);
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          return {
+            count: parsed.count || 0,
+            previousCount: null,
+            username: '',
+            isPolling: false,
+            error: null,
+            isNewFollower: false,
+          };
+        } catch {}
+      }
+    }
+    return {
+      count: 0,
+      previousCount: null,
+      username: '',
+      isPolling: false,
+      error: null,
+      isNewFollower: false,
+    };
   });
 
   const pollingRef = useRef(false);
   const timerRef = useRef<NodeJS.Timeout>();
 
+  useEffect(() => {
+    if (data.count > 0 && data.isPolling) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ count: data.count }));
+    }
+  }, [data.count, data.isPolling]);
+
   const startWatching = useCallback((username: string) => {
     pollingRef.current = true;
-    setData({
-      count: 0,
-      previousCount: null,
+    setData((prev) => ({
+      ...prev,
       username,
       isPolling: true,
-      error: null,
-      isNewFollower: false,
-    });
+    }));
 
     const poll = async () => {
       if (!pollingRef.current) return;
@@ -71,7 +94,7 @@ export function useFollowerTracker() {
   }, []);
 
   const scheduleNext = (poll: () => Promise<void>) => {
-    const delay = 5000 + Math.random() * 5000;
+    const delay = 2000 + Math.random() * 1000;
     timerRef.current = setTimeout(() => {
       poll();
       scheduleNext(poll);
