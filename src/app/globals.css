@@ -27,6 +27,29 @@ body {
   overflow-x: hidden;
 }
 
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-bg {
+  background: linear-gradient(-45deg, #e53935, #d32f2f, #c62828, #e53935, #ef5350, #e53935);
+  background-size: 400% 400%;
+  animation: gradient-shift 12s ease infinite;
+}
+
+@keyframes typewriter-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-typewriter-cursor {
+  animation: typewriter-cursor 0.7s step-end infinite;
+}
+
 @keyframes glow-pulse {
   0%, 100% {
     box-shadow: 0 0 20px rgba(229, 57, 53, 0.3), 0 0 40px rgba(229, 57, 53, 0.15);

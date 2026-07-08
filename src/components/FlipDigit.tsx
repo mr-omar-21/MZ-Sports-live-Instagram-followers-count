@@ -26,7 +26,7 @@ export default function FlipDigit({ value, delay = 0 }: FlipDigitProps) {
   }, [value, delay, displayValue]);
 
   return (
-    <div className="relative inline-flex items-center justify-center w-[0.7em] h-[1.15em] bg-[#1E1E1E] rounded-lg overflow-hidden select-none">
+    <div className="relative inline-flex items-center justify-center w-[1em] h-[1.35em] bg-[#1E1E1E] rounded-[0.08em] overflow-hidden select-none">
       <div className="absolute inset-x-0 top-1/2 h-[2px] bg-[#1E1E1E]/60 z-10" />
       <div className="absolute inset-x-0 top-1/2 h-[1px] bg-white/10 z-10" />
       <span

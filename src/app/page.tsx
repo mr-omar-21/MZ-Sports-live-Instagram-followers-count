@@ -6,6 +6,7 @@ import NewFollowerPopup from '@/components/NewFollowerPopup';
 import PlusOneAnimation from '@/components/PlusOneAnimation';
 import Fireworks from '@/components/Fireworks';
 import QRCode from '@/components/QRCode';
+import TypewriterText from '@/components/TypewriterText';
 import { useFollowerTracker } from '@/hooks/useFollowerTracker';
 
 const USERNAME = 'mzsports_tz';
@@ -17,6 +18,7 @@ export default function Home() {
     isPolling,
     error,
     isNewFollower,
+    isUnfollow,
     username,
     startWatching,
     acknowledgeFollower,
@@ -61,19 +63,27 @@ export default function Home() {
   }, [isNewFollower, count, acknowledgeFollower]);
 
   useEffect(() => {
-    if (isPolling && !isNewFollower && count > 0) {
+    if (isUnfollow) {
+      setDisplayCount(count);
+      const t = setTimeout(() => acknowledgeFollower(), 300);
+      return () => clearTimeout(t);
+    }
+  }, [isUnfollow, count, acknowledgeFollower]);
+
+  useEffect(() => {
+    if (isPolling && !isNewFollower && !isUnfollow && count > 0) {
       if (previousCount === null || count !== displayCount) {
         setDisplayCount(count);
       }
     }
-  }, [count, isPolling, isNewFollower, previousCount, displayCount]);
+  }, [count, isPolling, isNewFollower, isUnfollow, previousCount, displayCount]);
 
   const handlePopupClose = useCallback(() => {
     setShowPopup(false);
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#e53935] flex items-center justify-center p-6 sm:p-10">
+    <main className="min-h-screen animate-gradient-bg flex items-center justify-center p-6 sm:p-10">
       <div
         className="bg-white rounded-[24px] w-[95%] sm:w-[92%] lg:w-[88%] max-w-[1800px] flex flex-col lg:flex-row overflow-hidden min-h-[70vh] lg:min-h-[75vh]"
         style={{ boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)' }}
@@ -93,11 +103,15 @@ export default function Home() {
             <QRCode username={username || USERNAME} />
           </div>
 
-          <p className="text-[#43a047] font-anton uppercase tracking-wider text-center leading-tight mt-6"
-            style={{ fontSize: 'clamp(2rem, 4.5vw, 4rem)' }}
-          >
-            FOLLOW US<br />NOW!
-          </p>
+          <TypewriterText
+            text="FOLLOW US NOW!"
+            tag="p"
+            speed={60}
+            loopDelay={10000}
+            cursor={false}
+            className="text-[#43a047] font-anton uppercase tracking-wider text-center leading-tight mt-6"
+            style={{ fontSize: 'clamp(2rem, 5vw, 4.2rem)' }}
+          />
         </div>
 
         <div className="w-px bg-black/20 hidden lg:block" />
@@ -114,11 +128,15 @@ export default function Home() {
             </h1>
           </div>
 
-          <h2 className="text-[#e53935] font-anton uppercase tracking-wider text-center mt-2 mb-6"
+          <TypewriterText
+            text="LIVE FOLLOWERS COUNT"
+            tag="h2"
+            speed={50}
+            loopDelay={10000}
+            cursor={false}
+            className="text-[#e53935] font-anton uppercase tracking-wider text-center mt-2 mb-6"
             style={{ fontSize: 'clamp(2rem, 5vw, 4.2rem)' }}
-          >
-            LIVE FOLLOWERS COUNT
-          </h2>
+          />
 
           <div className="w-full flex justify-center mb-6">
             <FollowerCounter value={displayCount} />

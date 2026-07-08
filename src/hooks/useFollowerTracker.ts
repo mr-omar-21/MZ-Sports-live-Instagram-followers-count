@@ -11,6 +11,7 @@ export interface FollowerData {
   isPolling: boolean;
   error: string | null;
   isNewFollower: boolean;
+  isUnfollow: boolean;
 }
 
 export function useFollowerTracker() {
@@ -27,6 +28,7 @@ export function useFollowerTracker() {
             isPolling: false,
             error: null,
             isNewFollower: false,
+            isUnfollow: false,
           };
         } catch {}
       }
@@ -38,6 +40,7 @@ export function useFollowerTracker() {
       isPolling: false,
       error: null,
       isNewFollower: false,
+      isUnfollow: false,
     };
   });
 
@@ -71,6 +74,7 @@ export function useFollowerTracker() {
           const prevCount = prev.count;
           const newCount = json.count;
           const isNew = prevCount > 0 && newCount > prevCount;
+          const isUnfollow = prevCount > 0 && newCount < prevCount;
 
           return {
             ...prev,
@@ -78,6 +82,7 @@ export function useFollowerTracker() {
             previousCount: prevCount > 0 ? prevCount : null,
             error: null,
             isNewFollower: isNew,
+            isUnfollow,
           };
         });
       } catch (e) {
@@ -89,17 +94,16 @@ export function useFollowerTracker() {
     };
 
     poll();
+    const scheduleNext = (p: () => Promise<void>) => {
+      const delay = 1500 + Math.random() * 1500;
+      timerRef.current = setTimeout(() => {
+        p();
+        scheduleNext(p);
+      }, delay);
+    };
     scheduleNext(poll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const scheduleNext = (poll: () => Promise<void>) => {
-    const delay = 2000 + Math.random() * 1000;
-    timerRef.current = setTimeout(() => {
-      poll();
-      scheduleNext(poll);
-    }, delay);
-  };
 
   const stopWatching = useCallback(() => {
     pollingRef.current = false;
@@ -111,11 +115,12 @@ export function useFollowerTracker() {
       isPolling: false,
       error: null,
       isNewFollower: false,
+      isUnfollow: false,
     });
   }, []);
 
   const acknowledgeFollower = useCallback(() => {
-    setData((prev) => ({ ...prev, isNewFollower: false }));
+    setData((prev) => ({ ...prev, isNewFollower: false, isUnfollow: false }));
   }, []);
 
   return { ...data, startWatching, stopWatching, acknowledgeFollower };
