@@ -24,14 +24,15 @@ export async function GET(request: NextRequest) {
 
   try {
     const res = await fetch(
-      `${GRAPH_API}/${API_VERSION}/${businessId}?fields=followers_count&access_token=${token}`
+      `${GRAPH_API}/${API_VERSION}/${businessId}?fields=followers_count&access_token=${token}`,
+      { cache: 'no-store', headers: { 'Pragma': 'no-cache', 'Cache-Control': 'no-cache' } }
     );
 
     if (!res.ok) {
       const err = await res.json();
       return NextResponse.json(
         { error: err?.error?.message || 'Graph API error' },
-        { status: 502 }
+        { status: 502, headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' } }
       );
     }
 
@@ -41,11 +42,11 @@ export async function GET(request: NextRequest) {
       count: data.followers_count,
       username,
       source: 'graph-api',
-    });
+    }, { headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' } });
   } catch (err: any) {
     return NextResponse.json(
       { error: err?.message || 'Request failed' },
-      { status: 502 }
+      { status: 502, headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' } }
     );
   }
 }
