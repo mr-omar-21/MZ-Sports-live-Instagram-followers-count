@@ -14,7 +14,7 @@ export default function QRCode({ username }: QRCodeProps) {
     if (!canvasRef.current) return;
     const url = `https://instagram.com/${username}`;
     QRCodeLib.toCanvas(canvasRef.current, url, {
-      width: 280,
+      width: 400,
       margin: 2,
       color: {
         dark: '#1E1E1E',
@@ -28,7 +28,7 @@ export default function QRCode({ username }: QRCodeProps) {
       <canvas
         ref={canvasRef}
         className="rounded-xl"
-        style={{ width: 'clamp(180px, 20vw, 340px)', height: 'clamp(180px, 20vw, 340px)' }}
+        style={{ width: 'clamp(200px, 22vw, 420px)', height: 'clamp(200px, 22vw, 420px)' }}
       />
     </div>
   );
