@@ -41,8 +41,8 @@ export function useFollowerTracker() {
         const res = await fetch(
           `/api/followers?username=${encodeURIComponent(username)}`
         );
-        if (!res.ok) throw new Error('Failed to fetch');
         const json = await res.json();
+        if (!res.ok) throw new Error(json.error || 'Failed to fetch');
 
         setData((prev) => {
           const prevCount = prev.count;
@@ -57,8 +57,11 @@ export function useFollowerTracker() {
             isNewFollower: isNew,
           };
         });
-      } catch {
-        setData((prev) => ({ ...prev, error: 'Connection error' }));
+      } catch (e) {
+        setData((prev) => ({
+          ...prev,
+          error: e instanceof Error ? e.message : 'Connection error',
+        }));
       }
     };
 
