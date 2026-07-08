@@ -88,8 +88,8 @@ export default function Home() {
         className="bg-white rounded-[16px] sm:rounded-[24px] w-full sm:w-[95%] lg:w-[88%] max-w-[1800px] flex flex-col lg:flex-row overflow-hidden min-h-screen sm:min-h-[70vh] lg:min-h-[75vh]"
         style={{ boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)' }}
       >
-        {/* Mobile: stacked column. Desktop: left panel (40%) */}
-        <div className="lg:w-[40%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12">
+        {/* Mobile: bottom. Desktop: left panel (40%) */}
+        <div className="order-2 lg:order-1 lg:w-[40%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12">
           <img
             src="/instagram-logo.png"
             alt="Instagram"
@@ -113,8 +113,8 @@ export default function Home() {
 
         <div className="w-px bg-black/20 hidden lg:block" />
 
-        {/* Mobile: stacked column. Desktop: right panel (60%) */}
-        <div className="lg:w-[60%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12 min-h-[300px] sm:min-h-[400px]">
+        {/* Mobile: top. Desktop: right panel (60%) */}
+        <div className="order-1 lg:order-2 lg:w-[60%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12 min-h-[300px] sm:min-h-[400px]">
           <div className="flex items-center gap-3 sm:gap-4 mb-2">
             <img
               src="/mz-logo.png"
