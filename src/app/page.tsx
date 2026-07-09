@@ -85,19 +85,19 @@ export default function Home() {
   return (
     <main className="min-h-screen animate-gradient-bg flex items-center justify-center p-3 sm:p-6 lg:p-10">
       <div
-        className="bg-white rounded-[16px] sm:rounded-[24px] w-full sm:w-[95%] lg:w-[88%] max-w-[1800px] flex flex-col lg:flex-row overflow-hidden min-h-screen sm:min-h-[70vh] lg:min-h-[75vh]"
+        className="bg-white rounded-[16px] sm:rounded-[24px] w-full sm:w-[95%] md:w-[88%] max-w-[1800px] flex flex-col md:flex-row overflow-hidden min-h-screen sm:min-h-[70vh] md:min-h-[75vh]"
         style={{ boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)' }}
       >
         {/* Mobile: bottom. Desktop: left panel (40%) */}
-        <div className="order-2 lg:order-1 lg:w-[40%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12">
+        <div className="order-2 md:order-1 md:w-[40%] flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 px-4 sm:px-8 md:px-12">
           <img
             src="/instagram-logo.png"
             alt="Instagram"
-            className="w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-3 sm:mb-4 lg:mb-5 object-contain"
+            className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 mb-3 sm:mb-4 md:mb-5 object-contain"
           />
 
           <div className="flex items-center justify-center w-full max-w-[300px] sm:max-w-none">
-            <QRCode username={username || USERNAME} />
+          <QRCode username={username || USERNAME} />
           </div>
 
           <TypewriterText
@@ -106,20 +106,20 @@ export default function Home() {
             speed={60}
             loopDelay={10000}
             cursor={false}
-            className="text-[#43a047] font-anton uppercase tracking-wider text-center leading-tight mt-4 sm:mt-5 lg:mt-6"
+            className="text-[#43a047] font-anton uppercase tracking-wider text-center leading-tight mt-4 sm:mt-5 md:mt-6"
             style={{ fontSize: 'clamp(1.5rem, 6vw, 4.2rem)' }}
           />
         </div>
 
-        <div className="w-px bg-black/20 hidden lg:block" />
+        <div className="w-px bg-black/20 hidden md:block" />
 
         {/* Mobile: top. Desktop: right panel (60%) */}
-        <div className="order-1 lg:order-2 lg:w-[60%] flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-12 min-h-[300px] sm:min-h-[400px]">
+        <div className="order-1 md:order-2 md:w-[60%] flex flex-col items-center justify-center py-8 sm:py-12 md:py-16 px-4 sm:px-8 md:px-12 min-h-[300px] sm:min-h-[400px]">
           <div className="flex items-center gap-3 sm:gap-4 mb-2">
             <img
               src="/mz-logo.png"
               alt="MZ Sports"
-              className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain shrink-0"
+              className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain shrink-0"
             />
             <h1 className="text-[#1E1E1E] font-anton tracking-wider uppercase"
               style={{ fontSize: 'clamp(1rem, 3vw, 2.2rem)' }}
